@@ -7,10 +7,10 @@ import globalContext from './contexts/GlobalContext';
 
 function App() {
 
-  const [isConnected, setIsConnected] = useState(false);
+  const [userDataFromDb, setUserDataFromDb] = useState(null);
 
   return (
-    <globalContext.Provider value={{ isConnected, setIsConnected }}>
+    <globalContext.Provider value={{ userDataFromDb, setUserDataFromDb }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

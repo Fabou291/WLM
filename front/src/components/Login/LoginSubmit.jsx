@@ -9,7 +9,7 @@ const LoginSubmit = () => {
 
   const loginPath = "http://localhost:3333/api/auth/login";
   const { isConnecting, setIsConnecting, formUpdate } = useContext(loginContext);
-  const { setIsConnected } = useContext(globalContext);
+  const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
   const navigate = useNavigate();
 
   const handleLoginSubmit = () => {
@@ -34,10 +34,8 @@ const LoginSubmit = () => {
     try {
       const response = await fetch(loginPath, options);
       if (response.ok) {
-        const data = await response.json();
-        setIsConnected(true);
-        navigate("/home");
-        console.log(data);
+        const userData = await response.json();
+        setUserDataFromDb(userData);
       }
     }
     catch (err) {
@@ -47,6 +45,13 @@ const LoginSubmit = () => {
       setIsConnecting(false);
     }
   };
+
+  useEffect(() => {
+    if (userDataFromDb) {
+      console.log({ userDataFromDb });
+      navigate("/");
+    }
+  }, [userDataFromDb]);
 
 
   return (
