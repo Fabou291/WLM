@@ -3,14 +3,14 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
+import globalContext from '../../contexts/GlobalContext';
 
 const LoginSubmit = () => {
 
   const loginPath = "http://localhost:3333/api/auth/login";
   const { isConnecting, setIsConnecting, formUpdate } = useContext(loginContext);
+  const { setIsConnected } = useContext(globalContext);
   const navigate = useNavigate();
-
-  const [isConnected, setIsConnected] = useState(false);
 
   const handleLoginSubmit = () => {
     if (isConnecting === false) {

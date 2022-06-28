@@ -1,18 +1,25 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Home from './components/Home/Home';
+import globalContext from './contexts/GlobalContext';
 
 function App() {
+
+  const [isConnected, setIsConnected] = useState(false);
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/login' element={<Login />} />
-        <Route path='/register' element={<Register />} />
-        <Route path="/home" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <globalContext.Provider value={{ isConnected, setIsConnected }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </BrowserRouter>
+    </globalContext.Provider>
   );
 }
 
