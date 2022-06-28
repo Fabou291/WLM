@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
 import globalContext from '../../contexts/GlobalContext';
+// HELPERS
+import { fetchLogin } from '../../helpers/fetch';
 
 const LoginSubmit = () => {
 
-  const loginPath = "http://localhost:3333/api/auth/login";
   const { isConnecting, setIsConnecting, formUpdate } = useContext(loginContext);
   const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
   const navigate = useNavigate();
@@ -24,19 +25,10 @@ const LoginSubmit = () => {
 
   const loginRequest = async () => {
     const { email, password, autoAuth: remember } = formUpdate;
-    const options = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, remember }),
-      credentials: "include"
-    };
 
     try {
-      const response = await fetch(loginPath, options);
-      if (response.ok) {
-        const userData = await response.json();
-        setUserDataFromDb(userData);
-      }
+      const userData = await fetchLogin({ email, password, remember });
+      setUserDataFromDb(userData);
     }
     catch (err) {
       console.log(err);
@@ -48,7 +40,7 @@ const LoginSubmit = () => {
 
   useEffect(() => {
     if (userDataFromDb) {
-      console.log({ userDataFromDb });
+      console.log(userDataFromDb);
       navigate("/");
     }
   }, [userDataFromDb]);
