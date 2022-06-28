@@ -1,5 +1,6 @@
 // HOOKS
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
 
@@ -7,6 +8,7 @@ const LoginSubmit = () => {
 
   const loginPath = "http://localhost:3333/api/auth/login";
   const { isConnecting, setIsConnecting, formUpdate } = useContext(loginContext);
+  const navigate = useNavigate();
 
   const [isConnected, setIsConnected] = useState(false);
 
@@ -34,6 +36,7 @@ const LoginSubmit = () => {
       if (response.ok) {
         const data = await response.json();
         setIsConnected(true);
+        navigate("/home");
         console.log(data);
       }
     }
