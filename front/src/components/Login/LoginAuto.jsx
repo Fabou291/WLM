@@ -9,8 +9,16 @@ const LoginAuto = () => {
   const autoAuthCheckRef = useRef();
 
   const handleRememberLogin = () => {
-    const { checked } = autoAuthCheckRef.current;
-    setFormUpdate(prev => ({ ...prev, autoAuth: checked }));
+    const { checked: isLoginAutoChecked } = autoAuthCheckRef.current;
+
+    const updatedCheckboxes = {
+      autoAuth: isLoginAutoChecked
+    };
+
+    setFormUpdate(prev => ({
+      ...prev,
+      ...updatedCheckboxes
+    }));
   };
 
   return (

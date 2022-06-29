@@ -9,13 +9,20 @@ const LoginRememberEmail = () => {
   const emailCheckRef = useRef();
 
   const handleRememberEmailAndStatus = () => {
-    const { checked } = emailCheckRef.current;
+    const { checked: isRememberEmailChecked } = emailCheckRef.current;
+
+    const updatedCheckboxes = {
+      rememberEmail: isRememberEmailChecked
+    };
+
+    if (isRememberEmailChecked === false) {
+      updatedCheckboxes.rememberPassword = false;
+    }
+
     setFormUpdate(prev => ({
       ...prev,
-      rememberEmail: checked,
-      ...prev.rememberPassword && !checked && { rememberPassword: false }
+      ...updatedCheckboxes
     }));
-    // adding seleted email & status to storage or cookies 
   };
 
   const handleForgetEmailAndStatus = () => {

@@ -9,8 +9,16 @@ const LoginRememberPassword = () => {
   const passwordCheckRef = useRef();
 
   const handleRememberPassword = () => {
-    const { checked } = passwordCheckRef.current;
-    setFormUpdate(prev => ({ ...prev, rememberPassword: checked }));
+    const { checked: isRememberPasswordChecked } = passwordCheckRef.current;
+
+    const updatedCheckboxes = {
+      rememberPassword: isRememberPasswordChecked
+    };
+
+    setFormUpdate(prev => ({
+      ...prev,
+      ...updatedCheckboxes
+    }));
   };
 
   return (
