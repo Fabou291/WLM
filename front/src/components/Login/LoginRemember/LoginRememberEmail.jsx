@@ -17,6 +17,7 @@ const LoginRememberEmail = () => {
 
     if (isRememberEmailChecked === false) {
       updatedCheckboxes.rememberPassword = false;
+      updatedCheckboxes.autoAuth = false;
     }
 
     setFormUpdate(prev => ({
