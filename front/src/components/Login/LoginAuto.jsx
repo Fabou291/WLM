@@ -15,6 +15,11 @@ const LoginAuto = () => {
       autoAuth: isLoginAutoChecked
     };
 
+    if (isLoginAutoChecked === true) {
+      updatedCheckboxes.rememberEmail = true;
+      updatedCheckboxes.rememberPassword = true;
+    }
+
     setFormUpdate(prev => ({
       ...prev,
       ...updatedCheckboxes
