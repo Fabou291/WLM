@@ -15,6 +15,14 @@ const LoginRememberPassword = () => {
       rememberPassword: isRememberPasswordChecked
     };
 
+    if (isRememberPasswordChecked === true) {
+      updatedCheckboxes.rememberEmail = true;
+    }
+
+    if (isRememberPasswordChecked === false) {
+      updatedCheckboxes.autoAuth = false;
+    }
+
     setFormUpdate(prev => ({
       ...prev,
       ...updatedCheckboxes
