@@ -15,5 +15,6 @@
 @use "./components/login/status/status";
 @use "./components/login/status/status_list";
 
-@import "./components/register/register";
+@use "./components/reset_password/reset_password";
 
+@import "./components/register/register";

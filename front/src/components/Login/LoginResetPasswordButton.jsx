@@ -1,8 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 
-const LoginResetPassword = () => {
+const LoginResetPasswordButton = () => {
+
+  const navigate = useNavigate();
+
+  const switchToAskResetForm = () => {
+    navigate("/reset_password");
+  };
+
   return (
-    <button type="button" className="reset-password__btn">Mot de passe oublié ?</button>
+    <button
+      type="button"
+      className="reset-password__btn"
+      onClick={switchToAskResetForm}
+    >
+      Mot de passe oublié ?
+    </button>
   );
 };
 
-export default LoginResetPassword;
+export default LoginResetPasswordButton;
