@@ -45,13 +45,18 @@
 }
 
 .delete-saved {
+  margin-left: 15px;
+}
+
+.delete-saved,
+.reset-password__btn {
+  text-align: left;
   background-color: transparent;
   border: none;
   color: $font-login-delete-saved;
-  text-align: left;
-  margin-left: 15px;
 
   &:hover {
+    text-decoration: underline;
     cursor: pointer;
   }
 }
@@ -62,4 +67,9 @@
     height: 40px;
     width: 40px;
   }
+}
+
+.reset-password__btn {
+  margin-bottom: 20px;
+  text-align: center;
 }
