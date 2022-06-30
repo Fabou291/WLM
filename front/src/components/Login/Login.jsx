@@ -6,7 +6,8 @@ import {
   LoginImage,
   LoginRemember,
   LoginStatus,
-  LoginSubmit
+  LoginSubmit,
+  LoginResetPassword
 } from './loginIndex';
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
@@ -48,6 +49,7 @@ const Login = () => {
           <LoginStatus />
           <LoginRemember />
           <LoginSubmit />
+          <LoginResetPassword />
         </form>
       </div>
     </loginContext.Provider>
