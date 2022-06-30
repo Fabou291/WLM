@@ -1,7 +1,7 @@
 
 const LoginResetPassword = () => {
   return (
-    <button type="button" class="reset-password__btn">Mot de passe oublié ?</button>
+    <button type="button" className="reset-password__btn">Mot de passe oublié ?</button>
   );
 };
 
