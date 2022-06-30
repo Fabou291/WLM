@@ -1,4 +1,4 @@
-import { loginApiUrl, userInfosApiUrl } from '../data.js/apiUrls';
+import { loginApiUrl, userInfosApiUrl, askResetPasswordUrl } from '../data.js/apiUrls';
 
 let options = { credentials: "include" };
 
@@ -28,4 +28,16 @@ export const fetchUserInfos = async () => {
 
   const userData = await response.json();
   return userData;
+};
+
+export const fetchAskResetPassword = async (email) => {
+  const response = await fetch(askResetPasswordUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email })
+  });
+
+  if (response.ok === false) {
+    throw ("erreur");
+  }
 };
