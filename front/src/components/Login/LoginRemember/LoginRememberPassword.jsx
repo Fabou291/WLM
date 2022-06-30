@@ -33,7 +33,7 @@ const LoginRememberPassword = () => {
     <div className="remember__container">
       <input
         type="checkbox"
-        id="remember-password"
+        id="remember_password"
         ref={passwordCheckRef}
         onChange={handleRememberPassword}
         checked={formUpdate.rememberPassword}

@@ -36,7 +36,7 @@ const LoginRememberEmail = () => {
       <div className="remember__container">
         <input
           type="checkbox"
-          id="remember-email"
+          id="remember_email"
           ref={emailCheckRef}
           checked={formUpdate.rememberEmail}
           onChange={handleRememberEmailAndStatus}
