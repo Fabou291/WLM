@@ -1,4 +1,4 @@
-import { loginApiUrl, userInfosApiUrl, askResetPasswordUrl } from '../data.js/apiUrls';
+import { loginApiUrl, userInfosApiUrl, askResetPasswordUrl, getResetPasswordUrl } from '../data.js/apiUrls';
 
 let options = { credentials: "include" };
 
@@ -37,6 +37,19 @@ export const fetchAskResetPassword = async (email) => {
     body: JSON.stringify({ email })
   });
 
+  if (response.ok === false) {
+    throw ("erreur");
+  }
+};
+
+export const fetchResetPassword = async (endpoint, data) => {
+  const optionsLogin = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+
+  const response = await fetch(getResetPasswordUrl(endpoint), optionsLogin);
   if (response.ok === false) {
     throw ("erreur");
   }
