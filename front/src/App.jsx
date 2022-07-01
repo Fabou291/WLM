@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/reset_password' element={<ResetPasswordAsk />} />
+          <Route path='/reset-password/demand' element={<ResetPasswordAsk />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

@@ -5,7 +5,7 @@ const LoginResetPasswordButton = () => {
   const navigate = useNavigate();
 
   const switchToAskResetForm = () => {
-    navigate("/reset_password");
+    navigate("/reset-password/demand");
   };
 
   return (
