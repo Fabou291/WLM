@@ -38,7 +38,7 @@ export const fetchAskResetPassword = async (email) => {
   });
 
   if (response.ok === false) {
-    throw ("erreur");
+    throw ("Erreur lors de la requête");
   }
 };
 
@@ -51,6 +51,6 @@ export const fetchResetPassword = async (endpoint, data) => {
 
   const response = await fetch(getResetPasswordUrl(endpoint), optionsLogin);
   if (response.ok === false) {
-    throw ("erreur");
+    throw ("Erreur lors de la requête");
   }
 };

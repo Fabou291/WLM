@@ -1,5 +1,5 @@
 
-const ResetPasswordInput = ({ submitError }) => {
+const ResetPasswordInput = () => {
   return (
     <>
       <div className="label-input__container first-password">
@@ -10,9 +10,6 @@ const ResetPasswordInput = ({ submitError }) => {
       <div className="label-input__container second-password">
         <label>Confirmez votre nouveau mot de passe</label>
         <input type="password" required />
-        {submitError && (
-          <small>{submitError}</small>
-        )}
       </div>
     </>
   );

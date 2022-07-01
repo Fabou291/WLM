@@ -1,6 +1,8 @@
 const AskResetPasswordSubmit = () => {
   return (
-    <input type="submit" className="ask-reset-password__button" />
+    <div className="reset-password__button__container">
+      <input type="submit" className="ask-reset-password__button" />
+    </div>
   );
 };
 

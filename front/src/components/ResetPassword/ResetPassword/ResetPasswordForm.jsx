@@ -10,28 +10,33 @@ import { fetchResetPassword } from '../../../helpers/fetch';
 // HELPERS
 import passwordsValidator from '../../../helpers/passwordsValidator';
 
-const ResetPasswordForm = () => {
+const ResetPasswordForm = ({ setPasswordHasBeenReset }) => {
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
   const [apiResetPasswordEndpoint, setApiResetPasswordEndpoint] = useState(null);
+  const [isSendingRequest, setIsSendingRequest] = useState(false);
   const [submitError, setSubmitError] = useState(false);
 
   const handleResetPasswordButton = async (event) => {
     event.preventDefault();
     const elements = event.target.elements;
-
     setSubmitError(false);
 
     try {
       const passwords = passwordsValidator(elements);
+      setIsSendingRequest(true);
       await fetchResetPassword(apiResetPasswordEndpoint, passwords);
+      setPasswordHasBeenReset(true);
     }
     catch (err) {
       typeof err === "string"
         ? setSubmitError(err)
         : setSubmitError(err.message);
+    }
+    finally {
+      setIsSendingRequest(false);
     }
   };
 
@@ -52,7 +57,7 @@ const ResetPasswordForm = () => {
     >
       <ResetPasswordInstructions />
       <ResetPasswordInput submitError={submitError} />
-      <ResetPasswordSubmit />
+      <ResetPasswordSubmit data={{ isSendingRequest, submitError }} />
     </form>
   );
 };
