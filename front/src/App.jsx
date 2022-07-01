@@ -5,7 +5,7 @@ import Register from './components/Register/Register';
 import Home from './components/Home/Home';
 import globalContext from './contexts/GlobalContext';
 import ResetPasswordAsk from './components/ResetPassword/AskResetPassword/AskResetPassword';
-import SendNewPassword from './components/ResetPassword/SendNewPassword/SendNewPassword';
+import ResetPassword from './components/ResetPassword/ResetPassword/ResetPassword';
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/reset-password/demand' element={<ResetPasswordAsk />} />
-          <Route path='/reset-password' element={<SendNewPassword />} />
+          <Route path='/reset-password' element={<ResetPassword />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
