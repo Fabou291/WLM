@@ -5,9 +5,10 @@ import AskResetPasswordSubmit from './AskResetPasswordSubmit';
 import { fetchAskResetPassword } from '../../../helpers/fetch';
 import { useState } from 'react';
 
-const AskResetPasswordForm = () => {
+const AskResetPasswordForm = ({ setResetPasswordDemandSent }) => {
 
   const [submitError, setSubmitError] = useState(false);
+  const [isSendingRequest, setIsSendingRequest] = useState(false);
 
   const handleAskResetPasswordButton = async (event) => {
     event.preventDefault();
@@ -15,10 +16,17 @@ const AskResetPasswordForm = () => {
     setSubmitError(false);
 
     try {
+      setIsSendingRequest(true);
       await fetchAskResetPassword(email);
+      setResetPasswordDemandSent(true);
     }
     catch (err) {
-      setSubmitError(true);
+      typeof err === "string"
+        ? setSubmitError(err)
+        : setSubmitError(err.message);
+    }
+    finally {
+      setIsSendingRequest(false);
     }
 
   };
@@ -29,8 +37,8 @@ const AskResetPasswordForm = () => {
       onSubmit={handleAskResetPasswordButton}
     >
       <AskResetPasswordInstructions />
-      <AskResetPasswordInput submitError={submitError} />
-      <AskResetPasswordSubmit />
+      <AskResetPasswordInput />
+      <AskResetPasswordSubmit data={{ isSendingRequest, submitError }} />
     </form>
   );
 };
