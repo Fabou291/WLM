@@ -1,22 +1,28 @@
 const handleStorageWhenAuthenticated = (currentUser, remember) => {
-  localStorage.setItem("remember", JSON.stringify(remember));
   currentUser.lastConnection = Date.now();
 
-  const findSavedUsers = localStorage.getItem("savedUsers");
+  let users = null;
+  const findUsersInStorage = localStorage.getItem("users");
 
-  if (findSavedUsers) {
-    const savedUsers = JSON.parse(findSavedUsers);
-    savedUsers[currentUser.id] = currentUser;
-    savedUsers.current = currentUser;
-    localStorage.setItem("savedUsers", JSON.stringify(savedUsers));
+  if (findUsersInStorage) {
+    users = JSON.parse(findUsersInStorage);
+    const { stored } = users;
+
+    const currentUserIndexInStoredArray = stored.findIndex(user => user.id === currentUser.id);
+    if (currentUserIndexInStoredArray !== -1) {
+      stored.splice(currentUserIndexInStoredArray, 1);
+    }
+    stored.unshift(currentUser);
   }
   else {
-    const savedUsers = {
-      current: currentUser,
-      [currentUser.id]: currentUser
+    users = {
+      stored: [currentUser]
     };
-    localStorage.setItem("savedUsers", JSON.stringify(savedUsers));
   }
+
+  users.current = currentUser;
+  localStorage.setItem("users", JSON.stringify(users));
+  localStorage.setItem("remember", JSON.stringify(remember));
 };
 
 export default handleStorageWhenAuthenticated;
