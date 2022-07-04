@@ -1,5 +1,6 @@
 const handleStorageWhenAuthenticated = (currentUser, remember) => {
   localStorage.setItem("remember", JSON.stringify(remember));
+  currentUser.lastConnection = Date.now();
 
   const findSavedUsers = localStorage.getItem("savedUsers");
 
