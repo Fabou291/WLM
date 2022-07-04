@@ -2,8 +2,6 @@
 import { useRef, useContext, useEffect } from 'react';
 // CONTEXT
 import loginContext from '../../../contexts/LoginContext';
-// DATA
-import { fakeEmailList } from '../../../data.js/tempData';
 // HELPERS
 import clickOutside from '../../../helpers/clickOutside';
 
@@ -50,9 +48,6 @@ const LoginAuthEmailList = (props) => {
 
   return (
     <ul className="login-email__list" ref={listContainerRef}>
-      {fakeEmailList.map((email, idx) => (
-        <li key={idx} onClick={handleClick}>{email}</li>
-      ))}
       <li onClick={useAnotherId}>Utiliser un autre identifiant Windows Live ID</li>
     </ul>
   );
