@@ -13,12 +13,15 @@ import {
 import loginContext from '../../contexts/LoginContext';
 // DATA
 import formLoginData from '../../data.js/formLoginData';
+// HELPERS
+import getStorageUsersInfos from '../../helpers/getStorageUsersInfos';
 
 const Login = () => {
 
   const [formUpdate, setFormUpdate] = useState({ ...formLoginData });
   const [resetForm, setResetForm] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [storageData, setStorageData] = useState(null);
   const formRef = useRef();
   const providerValues = {
     resetForm,
@@ -26,7 +29,9 @@ const Login = () => {
     formUpdate,
     setFormUpdate,
     isConnecting,
-    setIsConnecting
+    setIsConnecting,
+    storageData,
+    setStorageData
   };
 
   const handleSubmit = event => {
@@ -39,6 +44,14 @@ const Login = () => {
       setResetForm(false);
     }
   }, [resetForm]);
+
+  useEffect(() => {
+    const storageUsersInfos = getStorageUsersInfos();
+
+    if (storageUsersInfos) {
+      setStorageData(storageUsersInfos);
+    }
+  }, []);
 
   return (
     <loginContext.Provider value={providerValues}>
