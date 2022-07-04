@@ -6,6 +6,7 @@ import loginContext from '../../contexts/LoginContext';
 import globalContext from '../../contexts/GlobalContext';
 // HELPERS
 import { fetchLogin } from '../../helpers/fetch';
+import handleStorageWhenAuthenticated from '../../helpers/handleStorageWhenAuthenticated';
 
 const LoginSubmit = () => {
 
@@ -27,8 +28,9 @@ const LoginSubmit = () => {
     const { email, password, autoAuth: remember } = formUpdate;
 
     try {
-      const userData = await fetchLogin({ email, password, remember });
-      setUserDataFromDb(userData);
+      const currentUser = await fetchLogin({ email, password, remember });
+      setUserDataFromDb(currentUser);
+      handleStorageWhenAuthenticated(currentUser, remember);
     }
     catch (err) {
       console.log(err);
