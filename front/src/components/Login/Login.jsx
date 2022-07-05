@@ -19,11 +19,13 @@ import getStorageRemember from '../../helpers/getStorageRemember';
 
 const Login = () => {
 
+  const formRef = useRef();
+
   const [formUpdate, setFormUpdate] = useState({ ...formLoginData });
   const [resetForm, setResetForm] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
   const [storageData, setStorageData] = useState(null);
-  const formRef = useRef();
+
   const providerValues = {
     resetForm,
     setResetForm,
@@ -54,7 +56,7 @@ const Login = () => {
       const { current } = storageUsersInfos;
       const { email, status, avatar } = current;
 
-      setStorageData(storageUsersInfos);
+      setStorageData({ ...storageUsersInfos, remember });
       setFormUpdate({
         password: "",
         email,
@@ -64,6 +66,10 @@ const Login = () => {
         rememberPassword: true,
         autoAuth: remember
       });
+
+      if (remember) {
+        setIsConnecting(true);
+      }
     }
   }, []);
 
