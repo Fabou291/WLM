@@ -15,6 +15,7 @@ import loginContext from '../../contexts/LoginContext';
 import formLoginData from '../../data.js/formLoginData';
 // HELPERS
 import getStorageUsersInfos from '../../helpers/getStorageUsersInfos';
+import getStorageRemember from '../../helpers/getStorageRemember';
 
 const Login = () => {
 
@@ -49,7 +50,20 @@ const Login = () => {
     const storageUsersInfos = getStorageUsersInfos();
 
     if (storageUsersInfos) {
+      const remember = getStorageRemember();
+      const { current } = storageUsersInfos;
+      const { email, status, avatar } = current;
+
       setStorageData(storageUsersInfos);
+      setFormUpdate({
+        password: "",
+        email,
+        status,
+        avatar,
+        rememberEmail: true,
+        rememberPassword: true,
+        autoAuth: remember
+      });
     }
   }, []);
 
