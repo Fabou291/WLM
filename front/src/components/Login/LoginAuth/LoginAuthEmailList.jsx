@@ -8,7 +8,7 @@ import clickOutside from '../../../helpers/clickOutside';
 const LoginAuthEmailList = (props) => {
   const { setShowEmailsList, dropDownButtonTarget } = props;
 
-  const { setResetForm, formUpdate, setFormUpdate } = useContext(loginContext);
+  const { setResetForm, formUpdate, setFormUpdate, storageData } = useContext(loginContext);
 
   const listContainerRef = useRef();
 
@@ -48,6 +48,10 @@ const LoginAuthEmailList = (props) => {
 
   return (
     <ul className="login-email__list" ref={listContainerRef}>
+      {storageData && storageData.stored
+        .map((user, idx) => (
+          <li key={idx} onClick={handleClick}>{user.email}</li>
+        ))}
       <li onClick={useAnotherId}>Utiliser un autre identifiant Windows Live ID</li>
     </ul>
   );
