@@ -1,7 +1,7 @@
 export default {
-  email: '',
-  password: '',
-  avatar: './assets/avatars/default.png',
+  email: null,
+  password: null,
+  avatar: "assets/avatars/default/0.jpg",
   rememberEmail: false,
   rememberPassword: false,
   autoAuth: false,

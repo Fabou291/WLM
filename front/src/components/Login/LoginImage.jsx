@@ -10,7 +10,7 @@ const LoginImage = () => {
   return (
     <div className="img__container">
       <img
-        src={formUpdate.avatar}
+        src={"http://localhost:3333/" + formUpdate.avatar}
         alt="user's avatar"
         className="avatar"
       />
