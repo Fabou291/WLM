@@ -21,6 +21,21 @@ export const fetchLogin = async (data, currentAbortController) => {
   return userData;
 };
 
+export const fetchMeFromLogin = async (currentAbortController) => {
+  const optionsMe = {
+    ...options,
+    signal: currentAbortController.signal
+  };
+
+  const response = await fetch(userInfosApiUrl, optionsMe);
+  if (response.ok === false) {
+    throw ("Non authentifié");
+  }
+
+  const userData = await response.json();
+  return userData;
+};
+
 export const fetchUserInfos = async () => {
   const response = await fetch(userInfosApiUrl, options);
   if (response.ok === false) {
