@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // CONTEXT
 import globalContext from '../../contexts/GlobalContext';
 // HELPERS
-import { fetchUserInfos } from '../../helpers/fetch';
+import { fetchMe } from '../../helpers/fetch';
 
 const Home = () => {
   const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
@@ -14,7 +14,7 @@ const Home = () => {
     if (userDataFromDb === null) {
       const getUserInfos = async () => {
         try {
-          const userData = await fetchUserInfos();
+          const userData = await fetchMe();
           setUserDataFromDb(userData);
           console.log(userData);
         }

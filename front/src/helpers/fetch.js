@@ -36,7 +36,7 @@ export const fetchMeFromLogin = async (currentAbortController) => {
   return userData;
 };
 
-export const fetchUserInfos = async () => {
+export const fetchMe = async () => {
   const response = await fetch(userInfosApiUrl, options);
   if (response.ok === false) {
     throw ("Non authentifié");
