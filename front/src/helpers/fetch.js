@@ -2,13 +2,14 @@ import { loginApiUrl, userInfosApiUrl, askResetPasswordUrl, getResetPasswordUrl 
 
 let options = { credentials: "include" };
 
-export const fetchLogin = async (data) => {
+export const fetchLogin = async (data, currentAbortController) => {
 
   const optionsLogin = {
     ...options,
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
+    signal: currentAbortController.signal
   };
 
   const response = await fetch(loginApiUrl, optionsLogin);
