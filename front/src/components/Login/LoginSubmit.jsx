@@ -9,9 +9,14 @@ import { fetchLogin, fetchMeFromLogin } from '../../helpers/fetch';
 import handleStorageWhenAuthenticated from '../../helpers/handleStorageWhenAuthenticated';
 
 const LoginSubmit = () => {
+
   const { isConnecting, setIsConnecting, formUpdate, storageData } = useContext(loginContext);
   const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
-  const abortController = useRef(null);
+  const abortControllerRef = useRef(null);
+  const timerStartRef = useRef(null);
+  const timerEndRef = useRef(null);
+  const timeoutRef = useRef(null);
+  const userFetchRef = useRef(null);
   const navigate = useNavigate();
 
   const [isAborting, setIsAborting] = useState(false);
@@ -19,19 +24,29 @@ const LoginSubmit = () => {
 
   const meOrLoginRequest = async (requestChoice) => {
     const { email, password, autoAuth: remember } = formUpdate;
-    let currentUser;
-    abortController.current = new AbortController();
+    abortControllerRef.current = new AbortController();
+
+    timerStartRef.current = Date.now();
 
     if (requestChoice === "login") {
-      currentUser = await fetchLogin({ email, password, remember }, abortController.current);
+      userFetchRef.current = await fetchLogin({ email, password, remember }, abortControllerRef.current);
     }
 
     if (requestChoice === "me") {
-      currentUser = await fetchMeFromLogin(abortController.current);
+      userFetchRef.current = await fetchMeFromLogin(abortControllerRef.current);
     }
 
-    setUserDataFromDb(currentUser);
-    handleStorageWhenAuthenticated(currentUser, remember);
+    timerEndRef.current = Date.now();
+    const fetchRequestDuration = timerEndRef.current - timerStartRef.current;
+
+    if (fetchRequestDuration < 3000) {
+      await new Promise(r => {
+        timeoutRef.current = setTimeout(() => r("mdr"), 3000 - fetchRequestDuration);
+      });
+    }
+
+    setUserDataFromDb(userFetchRef.current);
+    handleStorageWhenAuthenticated(userFetchRef.current, remember);
   };
 
   useEffect(() => {
@@ -59,8 +74,10 @@ const LoginSubmit = () => {
 
 
   useEffect(() => {
-    if (isAborting === true && abortController.current) {
-      abortController.current.abort();
+    if (isAborting === true && abortControllerRef.current) {
+      console.log("abort");
+      clearTimeout(timeoutRef.current);
+      abortControllerRef.current.abort();
       setIsAborting(false);
     }
   }, [isAborting]);
