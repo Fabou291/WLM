@@ -23,8 +23,8 @@ const ResetPasswordConfirmation = () => {
 
   return (
     <div className="password-reset-succes">
-      <p>Votre mot de passe à été reset.</p>
-      <p>Redirection sur la page login dans {redirectTimer} seconde(s).</p>
+      <p>Votre mot de passe à été réinitialisé.</p>
+      <p>Redirection dans {redirectTimer} seconde(s).</p>
     </div>
   );
 };

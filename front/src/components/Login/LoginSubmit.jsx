@@ -53,7 +53,7 @@ const LoginSubmit = () => {
     if (isConnecting) {
       const handleLoginSubmit = async () => {
         try {
-          if (storageData?.remember === true && hasClickedSubmitBtn === false) {
+          if (storageData.remember === true && hasClickedSubmitBtn === false) {
             await meOrLoginRequest("me");
             return;
           }
