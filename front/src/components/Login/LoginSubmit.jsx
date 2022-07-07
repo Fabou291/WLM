@@ -23,7 +23,7 @@ const LoginSubmit = () => {
   const [hasClickedSubmitBtn, setHasClickedSubmitBtn] = useState(false);
 
   const meOrLoginRequest = async (requestChoice) => {
-    const { email, password, autoAuth: remember } = formUpdate;
+    const { email, password, autoAuth: remember, rememberEmail } = formUpdate;
     abortControllerRef.current = new AbortController();
 
     timerStartRef.current = Date.now();
@@ -46,7 +46,7 @@ const LoginSubmit = () => {
     }
 
     setUserDataFromDb(userFetchRef.current);
-    handleStorageWhenAuthenticated(userFetchRef.current, remember);
+    handleStorageWhenAuthenticated(userFetchRef.current, remember, rememberEmail);
   };
 
   useEffect(() => {

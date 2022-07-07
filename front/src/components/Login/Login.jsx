@@ -51,11 +51,23 @@ const Login = () => {
   useEffect(() => {
     const storageUsersInfos = getStorageUsersInfos();
 
-    if (storageUsersInfos) {
+    if (storageUsersInfos.current || storageUsersInfos.stored.length !== 0) {
       const remember = getStorageRemember();
-      const { current } = storageUsersInfos;
-      const { email, status, avatar } = current;
 
+      let email, status, avatar;
+
+      if (storageUsersInfos.current) {
+        const { current } = storageUsersInfos;
+        email = current.email;
+        status = current.status;
+        avatar = current.avatar;
+      }
+      else if (storageUsersInfos.stored.length !== 0) {
+        const { stored } = storageUsersInfos;
+        email = stored[0].email;
+        status = stored[0].status;
+        avatar = stored[0].avatar;
+      }
       setStorageData({ ...storageUsersInfos, remember });
       setFormUpdate({
         password: "",

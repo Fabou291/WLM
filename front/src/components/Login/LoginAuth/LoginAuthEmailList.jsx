@@ -48,7 +48,7 @@ const LoginAuthEmailList = (props) => {
 
   return (
     <ul className="login-email__list" ref={listContainerRef}>
-      {storageData && storageData.stored
+      {(storageData && storageData.stored.length !== 0) && storageData.stored
         .map((user, idx) => (
           <li key={idx} onClick={handleClick}>{user.email}</li>
         ))}

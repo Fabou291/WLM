@@ -2,7 +2,10 @@ const getStorageUsersInfos = () => {
   const findStorageUsers = localStorage.getItem("users");
 
   if (findStorageUsers === null) {
-    return null;
+    return {
+      stored: [],
+      current: null
+    };
   }
 
   return JSON.parse(findStorageUsers);
