@@ -1,3 +1,5 @@
+import imageToBlobToBase64 from './imageToBlobToBase64';
+
 const getStoredUsers = () => {
   const findUsersInStorage = localStorage.getItem("users");
 
@@ -11,14 +13,10 @@ const getStoredUsers = () => {
   };
 };
 
-const handleStorageWhenAuthenticated = (currentUser, autoAuth, rememberEmail) => {
+const handleStorageWhenAuthenticated = async (currentUser, autoAuth, rememberEmail) => {
   currentUser.lastConnection = Date.now();
 
-  console.log({ currentUser, autoAuth, rememberEmail });
-
   let users = getStoredUsers();
-
-  console.log(users);
 
   if (autoAuth === false) {
     users.current = null;
@@ -30,19 +28,18 @@ const handleStorageWhenAuthenticated = (currentUser, autoAuth, rememberEmail) =>
 
   if (rememberEmail === true) {
     const currentUserIndexInStored = users.stored.findIndex(user => user.id === currentUser.id);
-    console.log({ currentUserIndexInStored });
     if (currentUserIndexInStored !== -1) {
       users.stored.splice(currentUserIndexInStored, 1);
     }
 
+    const avatarBase64 = await imageToBlobToBase64(currentUser.avatar);
+    currentUser.avatar = avatarBase64;
     users.stored.unshift(currentUser);
 
     if (autoAuth) {
       users.current = currentUser;
     }
   }
-
-  console.log({ users });
 
   localStorage.setItem("users", JSON.stringify(users));
   localStorage.setItem("remember", JSON.stringify(autoAuth));
