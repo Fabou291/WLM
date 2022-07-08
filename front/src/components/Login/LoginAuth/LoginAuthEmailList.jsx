@@ -4,17 +4,19 @@ import { useRef, useContext, useEffect } from 'react';
 import loginContext from '../../../contexts/LoginContext';
 // HELPERS
 import clickOutside from '../../../helpers/clickOutside';
+import replaceUserInfosWithSelectedEmail from '../../../helpers/replaceUserInfosWithSelectedEmail';
 
 const LoginAuthEmailList = (props) => {
   const { setShowEmailsList, dropDownButtonTarget } = props;
 
   const { setResetForm, formUpdate, setFormUpdate, storageData } = useContext(loginContext);
-
   const listContainerRef = useRef();
 
   const handleClick = ({ target }) => {
+    console.log(formUpdate);
     const { innerText: targetEmail } = target;
-    setFormUpdate({ ...formUpdate, email: targetEmail });
+
+    replaceUserInfosWithSelectedEmail(targetEmail, storageData, formUpdate, setFormUpdate);
     setShowEmailsList(false);
   };
 
@@ -48,7 +50,7 @@ const LoginAuthEmailList = (props) => {
 
   return (
     <ul className="login-email__list" ref={listContainerRef}>
-      {(storageData && storageData.stored.length !== 0) && storageData.stored
+      {(storageData.stored.length !== 0) && storageData.stored
         .map((user, idx) => (
           <li key={idx} onClick={handleClick}>{user.email}</li>
         ))}
