@@ -24,6 +24,7 @@ const Login = () => {
   const [formUpdate, setFormUpdate] = useState({ ...formLoginData });
   const [resetForm, setResetForm] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [isEmailOnInputSaved, setIsEmailOnInputSaved] = useState(false);
   const [storageData, setStorageData] = useState({
     stored: [],
     current: null
@@ -37,7 +38,9 @@ const Login = () => {
     isConnecting,
     setIsConnecting,
     storageData,
-    setStorageData
+    setStorageData,
+    isEmailOnInputSaved,
+    setIsEmailOnInputSaved
   };
 
   const handleSubmit = event => {
@@ -81,6 +84,8 @@ const Login = () => {
         rememberPassword: true,
         autoAuth: remember
       });
+
+      setIsEmailOnInputSaved(true);
 
       if (remember) {
         setIsConnecting(true);
