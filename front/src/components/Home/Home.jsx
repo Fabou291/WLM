@@ -1,39 +1,15 @@
 // HOOKS
-import { useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 // CONTEXT
 import globalContext from '../../contexts/GlobalContext';
-// HELPERS
-import { fetchMe } from '../../helpers/fetch';
 
 const Home = () => {
   const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (userDataFromDb === null) {
-      const getUserInfos = async () => {
-        try {
-          const userData = await fetchMe();
-          setUserDataFromDb(userData);
-        }
-        catch (err) {
-          console.log(err);
-          navigate("/login");
-        }
-      };
-
-      getUserInfos();
-    }
-
-  }, [userDataFromDb]);
 
   return (
-    userDataFromDb && (
-      <div>
-        Connected 😎
-      </div>
-    )
+    <div>
+      {userDataFromDb.email} is Connected 😎
+    </div>
   );
 };
 
