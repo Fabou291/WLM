@@ -12,7 +12,12 @@ import formLoginData from '../../../data.js/formLoginData';
 const LoginAuthEmailInput = (props) => {
 
   const { handleEmailList } = props;
-  const { formUpdate, setFormUpdate, isConnecting, storageData } = useContext(loginContext);
+  const { formUpdate, setFormUpdate, isConnecting, storageData, setIsEmailOnInputSaved } = useContext(loginContext);
+
+  const resetFieldsToDefault = (input) => {
+    setFormUpdate({ ...formLoginData, email: input });
+    setIsEmailOnInputSaved(false);
+  };
 
   const handleCurrentEmailInput = (input, inputType) => {
     const { stored } = storageData;
@@ -30,9 +35,10 @@ const LoginAuthEmailInput = (props) => {
       if (inputType !== "insertText" && inputType !== "insertFromPaste") {
         if (isInputEqualEmail) {
           replaceUserInfosWithSelectedEmail(input, storageData, formUpdate, setFormUpdate);
+          setIsEmailOnInputSaved(true);
         }
         else {
-          setFormUpdate({ ...formLoginData, email: input });
+          resetFieldsToDefault(input);
         }
         return;
       }
@@ -44,10 +50,11 @@ const LoginAuthEmailInput = (props) => {
 
     if (matchingEmails.length === 1) {
       replaceUserInfosWithSelectedEmail(matchingEmails[0], storageData, formUpdate, setFormUpdate);
+      setIsEmailOnInputSaved(true);
       return;
     }
 
-    setFormUpdate({ ...formLoginData, email: input });
+    resetFieldsToDefault(input);
   };
 
   const handleEmailInput = (event) => {
