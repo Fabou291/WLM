@@ -12,7 +12,7 @@ import {
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
 // DATA
-import formLoginData from '../../data.js/formLoginData';
+import formLoginData from '../../data/formLoginData';
 // HELPERS
 import getStorageUsersInfos from '../../helpers/getStorageUsersInfos';
 import getStorageRemember from '../../helpers/getStorageRemember';

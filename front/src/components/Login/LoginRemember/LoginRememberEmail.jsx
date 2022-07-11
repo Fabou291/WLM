@@ -5,7 +5,7 @@ import loginContext from '../../../contexts/LoginContext';
 // HELPERS
 import { deleteOneUserFromStorage } from '../../../helpers/handleStorage';
 // DATA
-import formLoginData from '../../../data.js/formLoginData';
+import formLoginData from '../../../data/formLoginData';
 
 const LoginRememberEmail = () => {
 

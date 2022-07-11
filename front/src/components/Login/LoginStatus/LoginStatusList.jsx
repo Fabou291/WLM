@@ -3,7 +3,7 @@ import { useRef, useEffect } from 'react';
 // HELPERS
 import clickOutside from '../../../helpers/clickOutside';
 // DATA
-import statusList from '../../../data.js/statusList';
+import statusList from '../../../data/statusList';
 
 const LoginStatusList = (props) => {
 

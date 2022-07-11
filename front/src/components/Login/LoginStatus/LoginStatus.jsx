@@ -3,7 +3,7 @@ import { useState } from 'react';
 // COMPONENTS
 import { LoginStatusList } from '../loginIndex';
 // DATA
-import statusList from '../../../data.js/statusList';
+import statusList from '../../../data/statusList';
 // ICONS
 import ArrowIcon from '../../../icons/dropDownArrow';
 

@@ -1,4 +1,4 @@
-import { loginApiUrl, userInfosApiUrl, askResetPasswordUrl, getResetPasswordUrl } from '../data.js/apiUrls';
+import { loginApiUrl, userInfosApiUrl, askResetPasswordUrl, getResetPasswordUrl } from '../data/apiUrls';
 
 let options = { credentials: "include" };
 
