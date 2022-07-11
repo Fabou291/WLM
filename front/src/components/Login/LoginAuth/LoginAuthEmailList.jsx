@@ -13,7 +13,6 @@ const LoginAuthEmailList = (props) => {
   const listContainerRef = useRef();
 
   const handleClick = ({ target }) => {
-    console.log(formUpdate);
     const { innerText: targetEmail } = target;
 
     replaceUserInfosWithSelectedEmail(targetEmail, storageData, formUpdate, setFormUpdate);

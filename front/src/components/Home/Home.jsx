@@ -16,7 +16,6 @@ const Home = () => {
         try {
           const userData = await fetchMe();
           setUserDataFromDb(userData);
-          console.log(userData);
         }
         catch (err) {
           console.log(err);

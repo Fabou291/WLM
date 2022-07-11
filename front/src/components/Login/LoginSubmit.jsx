@@ -75,7 +75,6 @@ const LoginSubmit = () => {
 
   useEffect(() => {
     if (isAborting === true && abortControllerRef.current) {
-      console.log("abort");
       clearTimeout(timeoutRef.current);
       abortControllerRef.current.abort();
       setIsAborting(false);
