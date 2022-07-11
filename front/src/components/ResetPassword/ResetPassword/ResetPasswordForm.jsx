@@ -8,7 +8,7 @@ import ResetPasswordSubmit from './ResetPasswordSubmit';
 // FETCH
 import { fetchResetPassword } from '../../../helpers/fetch';
 // HELPERS
-import passwordsValidator from '../../../helpers/passwordsValidator';
+import passwordsValidator from '../../../validators/passwordsValidator';
 
 const ResetPasswordForm = ({ setPasswordHasBeenReset }) => {
 

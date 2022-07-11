@@ -5,7 +5,7 @@ import ArrowIcon from '../../../icons/dropDownArrow';
 // CONTEXT
 import loginContext from '../../../contexts/LoginContext';
 // HELPERS
-import replaceUserInfosWithSelectedEmail from '../../../helpers/replaceUserInfosWithSelectedEmail';
+import replaceUserInfosWithSelectedEmail from '../../../helpers/login/replaceUserInfosWithSelectedEmail';
 // DATA
 import formLoginData from '../../../data/formLoginData';
 

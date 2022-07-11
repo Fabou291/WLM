@@ -4,7 +4,7 @@ import { useRef, useContext, useEffect } from 'react';
 import loginContext from '../../../contexts/LoginContext';
 // HELPERS
 import clickOutside from '../../../helpers/clickOutside';
-import replaceUserInfosWithSelectedEmail from '../../../helpers/replaceUserInfosWithSelectedEmail';
+import replaceUserInfosWithSelectedEmail from '../../../helpers/login/replaceUserInfosWithSelectedEmail';
 
 const LoginAuthEmailList = (props) => {
   const { setShowEmailsList, dropDownButtonTarget } = props;
