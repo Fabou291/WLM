@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 // COMPONENTS
-import Loading from './components/Loading';
+import Loader from './components/Loading';
 // CONTEXT
 import globalContext from './contexts/GlobalContext';
 // HELPERS
@@ -38,7 +38,7 @@ const PrivateRoutes = () => {
 
   return (
     userAuthenticated === "pending"
-      ? "Chargement..."
+      ? <Loader />
       : userAuthenticated === true
         ? <Outlet />
         : <Navigate to="/login" />

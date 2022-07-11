@@ -1,0 +1,14 @@
+@use "../abstracts/index" as *;
+
+.connecting-gif-protected__container {
+  position: absolute;
+  @include flex($flow: nowrap column, $justify: center, $align: center);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  p {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
