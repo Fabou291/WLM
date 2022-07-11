@@ -1,6 +1,6 @@
 import imageToBlobToBase64 from './imageToBlobToBase64';
 
-const getStoredUsers = () => {
+const getLocalStorageUsers = () => {
   const findUsersInStorage = localStorage.getItem("users");
 
   if (findUsersInStorage) {
@@ -16,7 +16,7 @@ const getStoredUsers = () => {
 const handleStorageWhenAuthenticated = async (currentUser, autoAuth, rememberEmail) => {
   currentUser.lastConnection = Date.now();
 
-  let users = getStoredUsers();
+  let users = getLocalStorageUsers();
 
   if (autoAuth === false) {
     users.current = null;
@@ -45,4 +45,4 @@ const handleStorageWhenAuthenticated = async (currentUser, autoAuth, rememberEma
   localStorage.setItem("remember", JSON.stringify(autoAuth));
 };
 
-export default handleStorageWhenAuthenticated;
+export { handleStorageWhenAuthenticated, deleteOneUserFromStorage };

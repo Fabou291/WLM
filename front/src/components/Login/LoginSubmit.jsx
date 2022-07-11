@@ -6,7 +6,7 @@ import loginContext from '../../contexts/LoginContext';
 import globalContext from '../../contexts/GlobalContext';
 // HELPERS
 import { fetchLogin, fetchMeFromLogin } from '../../helpers/fetch';
-import handleStorageWhenAuthenticated from '../../helpers/handleStorageWhenAuthenticated';
+import { handleStorageWhenAuthenticated } from '../../helpers/handleStorage';
 
 const LoginSubmit = () => {
 
