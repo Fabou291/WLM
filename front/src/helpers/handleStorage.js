@@ -66,4 +66,4 @@ const deleteOneUserFromStorage = (emailInput, setStorageData) => {
   }
 };
 
-export { handleStorageWhenAuthenticated, deleteOneUserFromStorage };
+export { getLocalStorageUsers, handleStorageWhenAuthenticated, deleteOneUserFromStorage };

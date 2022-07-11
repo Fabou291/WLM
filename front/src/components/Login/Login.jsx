@@ -14,21 +14,17 @@ import loginContext from '../../contexts/LoginContext';
 // DATA
 import formLoginData from '../../data/formLoginData';
 // HELPERS
-import getStorageUsersInfos from '../../helpers/getStorageUsersInfos';
-import getStorageRemember from '../../helpers/getStorageRemember';
+import { getLocalStorageUsers } from "../../helpers/handleStorage";
 
 const Login = () => {
 
   const formRef = useRef();
 
-  const [formUpdate, setFormUpdate] = useState({ ...formLoginData });
+  const [formUpdate, setFormUpdate] = useState(formLoginData);
   const [resetForm, setResetForm] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
   const [isEmailOnInputSaved, setIsEmailOnInputSaved] = useState(false);
-  const [storageData, setStorageData] = useState({
-    stored: [],
-    current: null
-  });
+  const [storageData, setStorageData] = useState({ stored: [], current: null });
 
   const providerValues = {
     resetForm,
@@ -55,49 +51,39 @@ const Login = () => {
   }, [resetForm]);
 
   useEffect(() => {
-    const storageUsersInfos = getStorageUsersInfos();
+    const storageUsersInfos = getLocalStorageUsers();
+    const { stored, current } = storageUsersInfos;
 
-    if (storageUsersInfos.current || storageUsersInfos.stored.length !== 0) {
-      const remember = getStorageRemember();
+    if (stored.length !== 0) {
+      const { email, status, avatar } = current || stored[0];
+      const autoAuth = current !== null;
 
-      let email, status, avatar;
-
-      if (storageUsersInfos.current) {
-        const { current } = storageUsersInfos;
-        email = current.email;
-        status = current.status;
-        avatar = current.avatar;
-      }
-      else if (storageUsersInfos.stored.length !== 0) {
-        const { stored } = storageUsersInfos;
-        email = stored[0].email;
-        status = stored[0].status;
-        avatar = stored[0].avatar;
-      }
-      setStorageData({ ...storageUsersInfos, remember });
+      setStorageData(storageUsersInfos);
       setFormUpdate({
-        password: "",
-        email,
-        status,
         avatar,
+        email,
+        password: "",
+        status,
         rememberEmail: true,
         rememberPassword: true,
-        autoAuth: remember
+        autoAuth
       });
-
       setIsEmailOnInputSaved(true);
 
-      if (remember) {
+      if (current !== null) {
         setIsConnecting(true);
       }
     }
-
   }, []);
 
   return (
     <loginContext.Provider value={providerValues}>
       <div className="login__container">
-        <form className={`login__container__form ${isConnecting ? "disabled" : ""}`} ref={formRef} onSubmit={handleSubmit}>
+        <form
+          className={`login__container__form ${isConnecting ? "disabled" : ""}`}
+          ref={formRef}
+          onSubmit={handleSubmit}
+        >
           <LoginImage />
           <LoginAuth />
           <LoginStatus />
