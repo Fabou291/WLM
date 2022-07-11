@@ -45,4 +45,25 @@ const handleStorageWhenAuthenticated = async (currentUser, autoAuth, rememberEma
   localStorage.setItem("remember", JSON.stringify(autoAuth));
 };
 
+const deleteOneUserFromStorage = (emailInput, setStorageData) => {
+  let users = getLocalStorageUsers();
+
+  if (users.stored.length === 0) {
+    return;
+  }
+  const storedIndex = users.stored.findIndex(({ email }) => {
+    return email === emailInput;
+  });
+  if (storedIndex !== -1) {
+    users.stored.splice(storedIndex, 1);
+
+    if (users.current && users.current.email === emailInput) {
+      users.current = null;
+    }
+
+    localStorage.setItem("users", JSON.stringify(users));
+    setStorageData(users);
+  }
+};
+
 export { handleStorageWhenAuthenticated, deleteOneUserFromStorage };

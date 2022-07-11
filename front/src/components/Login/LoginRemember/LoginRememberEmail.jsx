@@ -2,10 +2,14 @@
 import { useContext, useRef } from 'react';
 // CONTEXT
 import loginContext from '../../../contexts/LoginContext';
+// HELPERS
+import { deleteOneUserFromStorage } from '../../../helpers/handleStorage';
+// DATA
+import formLoginData from '../../../data.js/formLoginData';
 
 const LoginRememberEmail = () => {
 
-  const { formUpdate, setFormUpdate } = useContext(loginContext);
+  const { formUpdate, setFormUpdate, isEmailOnInputSaved, setStorageData } = useContext(loginContext);
   const emailCheckRef = useRef();
 
   const handleRememberEmailAndStatus = () => {
@@ -27,8 +31,8 @@ const LoginRememberEmail = () => {
   };
 
   const handleForgetEmailAndStatus = () => {
-    console.log('Forget email and status');
-    // deleting seleted email & status from storage or cookies 
+    deleteOneUserFromStorage(formUpdate.email, setStorageData);
+    setFormUpdate(formLoginData);
   };
 
   return (
@@ -47,6 +51,7 @@ const LoginRememberEmail = () => {
         type="button"
         className="delete-saved"
         onClick={handleForgetEmailAndStatus}
+        style={{ visibility: isEmailOnInputSaved ? "visible" : "hidden" }}
       >
         (Effacer)
       </button>
