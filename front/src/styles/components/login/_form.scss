@@ -1,6 +1,6 @@
 @use "../../abstracts/" as *;
 
-.login__container__form {
+.login__form {
   @include flex($flow: nowrap column);
   gap: 10px;
   padding-top: 62px;

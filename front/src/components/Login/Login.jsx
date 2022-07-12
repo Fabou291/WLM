@@ -79,18 +79,20 @@ const Login = () => {
   return (
     <loginContext.Provider value={providerValues}>
       <div className="login__container">
-        <form
-          className={`login__container__form ${isConnecting ? "disabled" : ""}`}
-          ref={formRef}
-          onSubmit={handleSubmit}
-        >
-          <LoginImage />
-          <LoginAuth />
-          <LoginStatus />
-          <LoginRemember />
-          <LoginSubmit />
-        </form>
-        <LoginResetPasswordButton />
+        <div className="login">
+          <form
+            className={`login__form ${isConnecting ? "disabled" : ""}`}
+            ref={formRef}
+            onSubmit={handleSubmit}
+          >
+            <LoginImage />
+            <LoginAuth />
+            <LoginStatus />
+            <LoginRemember />
+            <LoginSubmit />
+          </form>
+          <LoginResetPasswordButton />
+        </div>
       </div>
     </loginContext.Provider>
   );

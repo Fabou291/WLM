@@ -1,25 +1,31 @@
 @use "../../abstracts/" as *;
 
 .login__container {
-  @include flex($flow: nowrap column, $align: center);
-  position: relative;
-  font-size: $font-login-size;
-  font-family: $font-login;
-  border: 1px solid $border-login-container;
-  height: 864px;
-  width: 623px;
-  background: $bg-login;
-  background-size: 100% 100%;
+  height: 100vh;
+  @include flex($justify: center, $align: center);
 
-  &::before {
-    inset: 0px;
-    content: "";
-    position: absolute;
-    border: solid 2px $border-login-container-before;
-  }
-
-  & * {
+  .login {
+    @include flex($flow: nowrap column, $align: center);
+    position: relative;
     font-size: $font-login-size;
-    font-weight: 500;
+    font-family: $font-login;
+    border: 1px solid $border-login-container;
+    height: 864px;
+    width: 550px;
+    background: $bg-login;
+    background-size: 100% 100%;
+
+    &::before {
+      position: absolute;
+      inset: 0px;
+      content: "";
+      pointer-events: none;
+      border: solid 2px $border-login-container-before;
+    }
+
+    & * {
+      font-size: $font-login-size;
+      font-weight: 500;
+    }
   }
 }
