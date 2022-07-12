@@ -1,6 +1,6 @@
 const Loader = () => {
   return (
-    <div class="connecting-gif-protected__container">
+    <div className="connecting-gif-protected__container">
       <img
         className="connecting-gif-protected__img"
         src="./assets/loading_anim.gif"

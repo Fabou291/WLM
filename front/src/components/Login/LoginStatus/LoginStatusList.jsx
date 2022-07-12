@@ -1,5 +1,7 @@
 // HOOKS
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useContext } from 'react';
+// CONTEXT 
+import loginContext from '../../../contexts/LoginContext';
 // HELPERS
 import clickOutside from '../../../helpers/clickOutside';
 // DATA
@@ -7,14 +9,17 @@ import statusList from '../../../data/statusList';
 
 const LoginStatusList = (props) => {
 
-  const { setCurrenStatus, setShowStatusList, dropDownButtonTarget, classShow } = props;
+  const { setShowStatusList, dropDownButtonTarget, classShow } = props;
 
   const statusContainerRef = useRef();
+  const { formUpdate, setFormUpdate } = useContext(loginContext);
 
-  const handleClick = ({ target }) => {
-    const { innerText: targetStatus } = target;
-    setCurrenStatus(targetStatus);
+  const handleClick = ({ currentTarget }) => {
+    const { innerText: targetStatus } = currentTarget;
+    const { status } = currentTarget.dataset;
+
     setShowStatusList(false);
+    setFormUpdate({ ...formUpdate, status });
   };
 
   const clickOutsideStatusHandler = e => {
@@ -40,9 +45,9 @@ const LoginStatusList = (props) => {
 
   return (
     <ul className={"login-status__list " + classShow} ref={statusContainerRef}>
-      {statusList
+      {Object.values(statusList)
         .map((status, index) => (
-          <li key={index} onClick={handleClick}>
+          <li key={index} onClick={handleClick} data-status={status.key}>
             <div className="status-img__container">
               <img className="notHover" src={status.icon} alt="status icon" />
               <img className="hover" src={status.inconHover} alt="status icon hovered" />

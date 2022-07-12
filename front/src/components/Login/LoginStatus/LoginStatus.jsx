@@ -1,15 +1,19 @@
 // HOOKS
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 // COMPONENTS
 import { LoginStatusList } from '../loginIndex';
+// CONTEXT
+import loginContext from '../../../contexts/LoginContext';
 // DATA
 import statusList from '../../../data/statusList';
 // ICONS
 import ArrowIcon from '../../../icons/dropDownArrow';
+import { useEffect } from 'react';
 
 const LoginStatus = () => {
 
-  const [currentStatus, setCurrenStatus] = useState([statusList[0].sentence]);
+  const { formUpdate, setFormUpdate } = useContext(loginContext);
+
   const [showStatusList, setShowStatusList] = useState(false);
   const [dropDownButtonTarget, setDropDownButtonTarget] = useState(null);
 
@@ -18,11 +22,18 @@ const LoginStatus = () => {
     setShowStatusList(previous => !previous);
   };
 
+  useEffect(() => {
+    if (formUpdate) {
+      console.log(formUpdate.status);
+      console.log(statusList[formUpdate.status].sentence);
+    }
+  }, [formUpdate]);
+
   return (
     <div className="status__container">
       <div className="status-title">Statut :</div>
       <button type="button" className={`status-select${showStatusList ? " border" : ""}`} onClick={handleStatusList}>
-        {currentStatus}
+        {statusList[formUpdate.status].sentence}
         <div className='dropdown' id="dropDownStatus">
           < ArrowIcon />
         </div>
@@ -30,7 +41,6 @@ const LoginStatus = () => {
       <LoginStatusList
         classShow={showStatusList ? "display-flex" : "display-none"}
         setShowStatusList={setShowStatusList}
-        setCurrenStatus={setCurrenStatus}
         dropDownButtonTarget={dropDownButtonTarget}
         showStatusList={showStatusList}
       />

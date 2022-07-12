@@ -36,6 +36,8 @@ const LoginSubmit = () => {
       userFetchRef.current = await fetchMeFromLogin(abortControllerRef.current);
     }
 
+    userFetchRef.current.status = formUpdate.status;
+
     timerEndRef.current = Date.now();
     const fetchRequestDuration = timerEndRef.current - timerStartRef.current;
 
