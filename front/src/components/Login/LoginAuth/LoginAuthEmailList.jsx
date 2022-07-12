@@ -20,8 +20,6 @@ const LoginAuthEmailList = (props) => {
   };
 
   const useAnotherId = () => {
-
-    console.log('Utiliser un autre identifiant Windows Live ID');
     setResetForm(true);
     setShowEmailsList(false);
   };

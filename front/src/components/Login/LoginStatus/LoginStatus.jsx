@@ -22,13 +22,6 @@ const LoginStatus = () => {
     setShowStatusList(previous => !previous);
   };
 
-  useEffect(() => {
-    if (formUpdate) {
-      console.log(formUpdate.status);
-      console.log(statusList[formUpdate.status].sentence);
-    }
-  }, [formUpdate]);
-
   return (
     <div className="status__container">
       <div className="status-title">Statut :</div>
