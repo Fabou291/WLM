@@ -19,6 +19,11 @@
       padding: 3px;
     }
 
+    // workaround to prevent default autofill background color
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px white inset;
+    }
+
     &:focus {
       outline: none;
     }

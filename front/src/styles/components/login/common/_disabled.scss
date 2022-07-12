@@ -1,10 +1,6 @@
 @use "../../../abstracts/" as *;
 
 .login__container {
-  input:disabled {
-    color: $login-disabled-text-border;
-  }
-
   .disabled {
     .login-email-__container,
     .login-password__container,
@@ -19,8 +15,14 @@
     }
 
     input[type="email"],
-    input[type="password"] {
+    input[type="password"],
+    input:-webkit-autofill:disabled,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill {
       border-color: $login-disabled-text-border;
+      box-shadow: 0 0 0px 1000px #ebf3f6 inset;
+      -webkit-text-fill-color: $login-disabled-text-border;
     }
   }
 }
