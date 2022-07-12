@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 // COMPONENTS
-import Loader from './components/Loading';
+import Loader from './components/Loader';
 // CONTEXT
 import globalContext from './contexts/GlobalContext';
 // HELPERS
