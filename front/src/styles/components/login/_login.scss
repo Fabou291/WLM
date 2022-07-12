@@ -2,6 +2,7 @@
 
 .login__container {
   @include flex($flow: nowrap column, $align: center);
+  position: relative;
   font-size: $font-login-size;
   font-family: $font-login;
   border: 1px solid $border-login-container;
@@ -10,7 +11,15 @@
   background: $bg-login;
   background-size: 100% 100%;
 
+  &::before {
+    inset: 0px;
+    content: "";
+    position: absolute;
+    border: solid 2px $border-login-container-before;
+  }
+
   & * {
-    font-size: 12px;
+    font-size: $font-login-size;
+    font-weight: 500;
   }
 }

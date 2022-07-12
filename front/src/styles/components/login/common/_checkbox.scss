@@ -17,7 +17,8 @@
     }
 
     &:checked::after {
-      background: url("./assets/icons/checkbox_icon.png") center no-repeat;
+      background: url("./assets/icons/checkbox_icon.png") no-repeat;
+      background-position: 80% 20%;
     }
 
     &::before,

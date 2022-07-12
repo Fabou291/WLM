@@ -8,6 +8,13 @@
   width: 226px;
   margin-bottom: auto;
 
+  label[for="emailLogin"],
+  label[for="password"] {
+    display: block;
+    padding-bottom: 2px;
+    margin-left: 1px;
+  }
+
   input {
     border: 1px solid $bg-login-input-border;
     padding-block: 2px;
@@ -51,7 +58,7 @@
 }
 
 .delete-saved {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .delete-saved,

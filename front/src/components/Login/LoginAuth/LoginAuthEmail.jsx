@@ -14,7 +14,7 @@ const LoginAuthEmail = () => {
   };
 
   return (
-    <div className="login-email-__container">
+    <div className="login-email__container">
       <LoginAuthEmailInput
         handleEmailList={handleEmailList}
       />
