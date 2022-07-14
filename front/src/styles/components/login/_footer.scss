@@ -1,0 +1,14 @@
+@use "../../abstracts/" as *;
+
+.login-footer {
+  padding: 7px;
+  width: 100%;
+  @include flex($align: center);
+
+  &__title {
+    color: #63614e;
+    font-weight: 100;
+    font-size: 0.7rem;
+    padding-left: 1px;
+  }
+}

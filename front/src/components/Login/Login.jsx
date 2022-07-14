@@ -7,7 +7,8 @@ import {
   LoginRemember,
   LoginStatus,
   LoginSubmit,
-  LoginResetPasswordButton
+  LoginResetPasswordButton,
+  LoginFooter
 } from './loginIndex';
 import HeaderWithLogo from '../HeaderWithLogo';
 // CONTEXT
@@ -94,6 +95,7 @@ const Login = () => {
             <LoginSubmit />
           </form>
           <LoginResetPasswordButton />
+          <LoginFooter />
         </div>
       </div>
     </loginContext.Provider>
