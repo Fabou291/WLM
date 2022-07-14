@@ -9,6 +9,7 @@ import {
   LoginSubmit,
   LoginResetPasswordButton
 } from './loginIndex';
+import HeaderWithLogo from '../HeaderWithLogo';
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
 // DATA
@@ -80,6 +81,7 @@ const Login = () => {
     <loginContext.Provider value={providerValues}>
       <div className="login__container">
         <div className="login">
+          <HeaderWithLogo />
           <form
             className={`login__form ${isConnecting ? "disabled" : ""}`}
             ref={formRef}

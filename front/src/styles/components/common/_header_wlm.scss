@@ -1,0 +1,22 @@
+@use "../../abstracts/index" as *;
+
+.header-wlm {
+  padding: 7px;
+  width: 100%;
+  @include flex($align: center);
+  color: white;
+
+  &__title,
+  b {
+    font-size: 0.7rem;
+  }
+
+  &__title {
+    font-weight: 100;
+    margin-left: 5px;
+
+    b {
+      font-weight: normal;
+    }
+  }
+}

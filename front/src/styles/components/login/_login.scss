@@ -33,7 +33,7 @@
       z-index: 0;
     }
 
-    & * {
+    & :not(.header-wlm__title, .header-wlm__title b) {
       font-size: $font-login-size;
       font-weight: 500;
     }
