@@ -41,10 +41,6 @@ const Login = () => {
     setIsEmailOnInputSaved
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-  };
-
   useEffect(() => {
     if (resetForm) {
       setFormUpdate({ ...formLoginData });
@@ -86,7 +82,6 @@ const Login = () => {
           <form
             className={`login__form ${isConnecting ? "disabled" : ""}`}
             ref={formRef}
-            onSubmit={handleSubmit}
           >
             <LoginImage />
             <LoginAuth />
