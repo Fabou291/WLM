@@ -24,9 +24,26 @@ $border-login-status-list: #a0a0a0;
 
 // CONNECT BUTTON
 $bg-login-connect-btn: #e0e8f0;
-$bg-connect-btn-border: grey;
+$border-connect-btn: #808888;
+$border-connect-btn-before: #c0c8d0;
 $font-login-connect-btn-font: #001595;
 
 // DISABLED
 $login-disabled-text-border: #c1c1c1;
 $font-login-disabled-icon: #6d6d6d;
+
+// GRADIENT
+$bg-login-connect-btn: linear-gradient(
+  180deg,
+  rgba(224, 232, 240, 1) 0%,
+  rgba(216, 232, 240, 1) 54%,
+  rgba(200, 232, 240, 1) 55%,
+  rgba(216, 232, 240, 1) 100%
+);
+$bg-login-connect-btn-hover: linear-gradient(
+  180deg,
+  rgba(200, 232, 240, 1) 0%,
+  rgba(200, 232, 240, 1) 54%,
+  rgba(192, 216, 240, 1) 55%,
+  rgba(200, 224, 240, 1) 100%
+);

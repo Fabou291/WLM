@@ -90,16 +90,17 @@ const LoginSubmit = () => {
   }, [userDataFromDb]);
 
   return (
-    <input
-      type="submit"
-      value={isConnecting ? "Annuler" : "Connexion"}
+    <button
+      type="button"
       id="connect__btn"
       onClick={() => {
         setIsConnecting(prev => !prev);
         setHasClickedSubmitBtn(true);
         isConnecting && setIsAborting(true);
       }}
-    />
+    >
+      {isConnecting ? "Annuler" : "Connexion"}
+    </button>
   );
 
 };

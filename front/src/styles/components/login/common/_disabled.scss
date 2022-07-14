@@ -4,9 +4,9 @@
   .disabled {
     .login-email__container,
     .login-password__container,
-    .status__container,
-    button {
-      color: $login-disabled-text-border;
+    .status-title,
+    .status-select {
+      color: $login-disabled-text-border !important;
       pointer-events: none;
     }
 

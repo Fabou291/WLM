@@ -1,18 +1,28 @@
 @use "../../abstracts/" as *;
 
 #connect__btn {
+  position: relative;
   margin: auto;
   border-radius: 0.5px;
-  border-bottom: solid 1px $bg-connect-btn-border;
+  border-bottom: solid 1px $border-connect-btn;
   border-width: 0 0 1px 0;
-  box-shadow: 0 0 0 1px white, 0 0 0 2px $bg-login-input-border;
+  box-shadow: 0 0 0 1px white, 0 0 0 2px #c8c8c8;
   color: $font-login-connect-btn-font;
-  background: linear-gradient(#e0e8f0, #d8e8f0);
+  background: $bg-login-connect-btn;
   margin-top: 15px;
   width: 68px;
   line-height: 15px;
+  padding: 2px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0px;
+    border-bottom: solid 1px $border-connect-btn-before;
+    pointer-events: none;
+  }
 
   &:hover {
-    background: linear-gradient(#c8e8f0, #c8e0f0);
+    background: $bg-login-connect-btn-hover;
   }
 }
