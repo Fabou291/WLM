@@ -22,7 +22,7 @@
       content: "";
       inset: 0px;
       pointer-events: none;
-      border: solid 2px rgba(148, 157, 188, 0.38);
+      border: solid 2px $border-login-container-before;
       z-index: 1;
     }
 
