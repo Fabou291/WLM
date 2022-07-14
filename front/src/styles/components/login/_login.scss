@@ -10,6 +10,7 @@
     font-size: $font-login-size;
     font-family: $font-login;
     border: 1px solid $border-login-container;
+    overflow: hidden;
     height: 864px;
     width: 550px;
     background: $bg-login;
@@ -17,10 +18,19 @@
 
     &::before {
       position: absolute;
-      inset: 0px;
       content: "";
+      inset: 0px;
       pointer-events: none;
-      border: solid 2px $border-login-container-before;
+      border: solid 2px rgba(148, 157, 188, 0.38);
+      z-index: 1;
+    }
+
+    &::after {
+      position: absolute;
+      content: url("/assets/background_stripes.jpg");
+      right: 2px;
+      top: -2px;
+      z-index: 0;
     }
 
     & * {
