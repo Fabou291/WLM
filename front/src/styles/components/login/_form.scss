@@ -20,7 +20,8 @@
     padding-block: 2px;
 
     &[type="email"],
-    &[type="password"] {
+    &[type="password"],
+    &[type="text"] {
       width: 100%;
       box-sizing: border-box;
       padding: 3px;
