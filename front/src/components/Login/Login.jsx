@@ -8,9 +8,9 @@ import {
   LoginStatus,
   LoginSubmit,
   LoginResetPasswordButton,
-  LoginFooter
 } from './loginIndex';
 import HeaderWithLogo from '../HeaderWithLogo';
+import FooterWindowsLiveId from '../FooterWindowsLiveId';
 // CONTEXT
 import loginContext from '../../contexts/LoginContext';
 // DATA
@@ -90,7 +90,7 @@ const Login = () => {
             <LoginSubmit />
           </form>
           <LoginResetPasswordButton />
-          <LoginFooter />
+          <FooterWindowsLiveId />
         </div>
       </div>
     </loginContext.Provider>

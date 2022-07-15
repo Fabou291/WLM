@@ -15,5 +15,4 @@ export { default as LoginImage } from './LoginImage';
 export { default as LoginAuto } from './LoginAuto';
 export { default as LoginSubmit } from './LoginSubmit';
 export { default as LoginResetPasswordButton } from './LoginResetPasswordButton';
-export { default as LoginFooter } from './LoginFooter';
 

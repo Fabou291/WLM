@@ -1,4 +1,4 @@
-const LoginFooter = () => {
+const FooterWindowsLiveId = () => {
   return (
     <footer className="login-footer">
       <img src="/assets/wlm_footer_logo.png" alt="Logo de Windows Live Messenger" />
@@ -7,4 +7,4 @@ const LoginFooter = () => {
   );
 };
 
-export default LoginFooter;
+export default FooterWindowsLiveId;
