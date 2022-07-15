@@ -1,14 +1,14 @@
-// HOOKS
-import { useContext } from 'react';
-// CONTEXT
-import globalContext from '../../contexts/GlobalContext';
+// COMPONENTS
+import Contacts from "./Contacts/Contacts";
+import User from './User/User';
 
 const Home = () => {
-  const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
-
   return (
-    <div>
-      {userDataFromDb.email} is Connected 😎
+    <div className="home__container">
+      <div className="home">
+        <User />
+        <Contacts />
+      </div>
     </div>
   );
 };
