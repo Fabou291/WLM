@@ -20,6 +20,11 @@
 
 @use "./components/loading";
 
-@use "./components/common/header_wlm";
+// HOME
+
+@use "./components/home/contacts";
+@use "./components/home/user";
+
+// REGISTER
 
 @import "./components/register/register";
