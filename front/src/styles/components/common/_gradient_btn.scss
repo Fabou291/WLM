@@ -1,6 +1,8 @@
-@use "../../abstracts/" as *;
+@use "../../abstracts/index" as *;
 
-#connect__btn {
+#connect__btn,
+.ask-reset-password__button,
+.reset-password__button {
   position: relative;
   margin: auto;
   border-radius: 0.5px;

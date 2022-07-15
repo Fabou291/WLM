@@ -1,16 +1,22 @@
 @use "./components/app";
 @use "./settings/base";
 
+// COMMON
+
+@use "./components/common/header_wlm";
+@use "./components/common/stripe_background";
+@use "./components/common/gradient_btn";
+
+// LOGIN
+
 @use "./components/login/common/login_dropdown";
 @use "./components/login/common/checkbox";
 @use "./components/login/common/disabled";
 @use "./components/login/common/classes";
 
-@use "./components/login/login";
 @use "./components/login/avatar";
 @use "./components/login/form";
 @use "./components/login/email";
-@use "./components/login/connect_btn";
 @use "./components/login/footer";
 
 @use "./components/login/status/status";
