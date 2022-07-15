@@ -1,8 +1,7 @@
 // HOOKS
 import { useState } from 'react';
 // COMPONENTS
-import ResetPasswordForm from './ResetPasswordForm';
-import ResetPasswordConfirmation from './ResetPasswordConfirmation';
+import { ResetPasswordForm, ResetPasswordConfirmation } from "../resetPasswordIndex";
 
 const ResetPassword = () => {
 

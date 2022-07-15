@@ -2,9 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 // COMPONENTS
-import ResetPasswordInstructions from './ResetPasswordInstructions';
-import ResetPasswordInput from './ResetPasswordInput';
-import ResetPasswordSubmit from './ResetPasswordSubmit';
+import { ResetPasswordInstructions, ResetPasswordInput, ResetPasswordSubmit } from "../resetPasswordIndex";
 // FETCH
 import { fetchResetPassword } from '../../../helpers/fetch';
 // HELPERS

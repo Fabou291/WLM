@@ -1,14 +1,18 @@
-import { useState, useEffect } from 'react';
+// HOOKS
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, } from "react-router-dom";
-import Login from './components/Login/Login';
+// COMPONENTS
 import Register from './components/Register/Register';
-import Home from './components/Home/Home';
-import globalContext from './contexts/GlobalContext';
+import Login from './components/Login/Login';
 import ResetPasswordAsk from './components/ResetPassword/AskResetPassword/AskResetPassword';
 import ResetPassword from './components/ResetPassword/ResetPassword/ResetPassword';
+import Home from './components/Home/Home';
+// CONTEXT
+import globalContext from './contexts/GlobalContext';
+// OUTLET
 import PrivateRoutes from './PrivateRoutes';
 
-function App() {
+const App = () => {
 
   const [userDataFromDb, setUserDataFromDb] = useState(null);
 
@@ -28,6 +32,6 @@ function App() {
       </BrowserRouter>
     </globalContext.Provider>
   );
-}
+};
 
 export default App;

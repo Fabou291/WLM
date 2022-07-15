@@ -1,5 +1,3 @@
-
-
 const AskResetPasswordInput = () => {
   return (
     <div className="label-input__container">

@@ -8,11 +8,10 @@ import loginContext from '../../../contexts/LoginContext';
 import statusList from '../../../data/statusList';
 // ICONS
 import ArrowIcon from '../../../icons/dropDownArrow';
-import { useEffect } from 'react';
 
 const LoginStatus = () => {
 
-  const { formUpdate, setFormUpdate } = useContext(loginContext);
+  const { formUpdate } = useContext(loginContext);
 
   const [showStatusList, setShowStatusList] = useState(false);
   const [dropDownButtonTarget, setDropDownButtonTarget] = useState(null);

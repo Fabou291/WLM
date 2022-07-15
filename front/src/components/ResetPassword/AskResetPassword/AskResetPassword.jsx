@@ -1,6 +1,7 @@
+// HOOKS
 import { useState } from 'react';
-import AskResetPasswordConfirmation from './AskResetPasswordConfirmation';
-import AskResetPasswordForm from './AskResetPasswordForm';
+// COMPONENTS
+import { AskResetPasswordConfirmation, AskResetPasswordForm } from "../resetPasswordIndex";
 
 const AskResetPassword = () => {
 

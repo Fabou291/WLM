@@ -15,7 +15,6 @@ const LoginStatusList = (props) => {
   const { formUpdate, setFormUpdate } = useContext(loginContext);
 
   const handleClick = ({ currentTarget }) => {
-    const { innerText: targetStatus } = currentTarget;
     const { status } = currentTarget.dataset;
 
     setShowStatusList(false);

@@ -1,5 +1,3 @@
-
-
 const ResetPasswordInstructions = () => {
   return (
     <article className="instructions__container">
