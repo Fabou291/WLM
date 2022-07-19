@@ -42,8 +42,8 @@ const LoginSubmit = () => {
     const fetchRequestDuration = timerEndRef.current - timerStartRef.current;
 
     if (fetchRequestDuration < 3000) {
-      await new Promise(r => {
-        timeoutRef.current = setTimeout(() => r("mdr"), 3000 - fetchRequestDuration);
+      await new Promise(resolve => {
+        timeoutRef.current = setTimeout(resolve, 3000 - fetchRequestDuration);
       });
     }
 
