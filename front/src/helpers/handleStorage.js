@@ -33,11 +33,11 @@ const handleStorageWhenAuthenticated = async (currentUser, autoAuth, rememberEma
     }
 
     const avatarBase64 = await imageToBlobToBase64(currentUser.avatar);
-    currentUser.avatar = avatarBase64;
-    users.stored.unshift(currentUser);
+    const currentUserAvatarBase64 = { ...currentUser, avatar: avatarBase64 };
+    users.stored.unshift(currentUserAvatarBase64);
 
     if (autoAuth) {
-      users.current = currentUser;
+      users.current = currentUserAvatarBase64;
     }
   }
 
