@@ -126,7 +126,8 @@
     max-width: 100%;
     padding-right: 20px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border: 1px solid #4890c8;
 
       &::before {
