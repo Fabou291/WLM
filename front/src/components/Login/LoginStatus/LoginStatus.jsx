@@ -24,7 +24,11 @@ const LoginStatus = () => {
   return (
     <div className="status__container">
       <div className="status-title">Statut :</div>
-      <button type="button" className={`status-select${showStatusList ? " border" : ""}`} onClick={handleStatusList}>
+      <button
+        type="button"
+        className={`status-select${showStatusList ? " border" : ""}`}
+        onClick={handleStatusList}
+      >
         {statusList[formUpdate.status].sentence}
         <div className='dropdown' id="dropDownStatus">
           < ArrowIcon />
@@ -32,9 +36,7 @@ const LoginStatus = () => {
       </button>
       <LoginStatusList
         classShow={showStatusList ? "display-flex" : "display-none"}
-        setShowStatusList={setShowStatusList}
-        dropDownButtonTarget={dropDownButtonTarget}
-        showStatusList={showStatusList}
+        {... { showStatusList, setShowStatusList, dropDownButtonTarget, setDropDownButtonTarget }}
       />
     </div>
   );

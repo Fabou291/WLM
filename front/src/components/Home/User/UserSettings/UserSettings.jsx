@@ -34,7 +34,7 @@ const UserSettings = () => {
       </button>
       <UserSettingsList
         classShow={showSettings ? "display-flex" : "display-none"}
-        {...{ setShowSettings, showSettings, dropDownButtonTarget }}
+        {...{ showSettings, setShowSettings, dropDownButtonTarget, setDropDownButtonTarget }}
       />
     </div>
   );

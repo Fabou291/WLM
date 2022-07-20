@@ -1,5 +1,5 @@
 // HOOKS
-import { useRef, useEffect, useContext } from 'react';
+import { useRef, useEffect, useContext, useCallback } from 'react';
 // CONTEXT 
 import loginContext from '../../../contexts/LoginContext';
 // HELPERS
@@ -9,7 +9,7 @@ import statusList from '../../../data/statusList';
 
 const LoginStatusList = (props) => {
 
-  const { setShowStatusList, dropDownButtonTarget, classShow } = props;
+  const { setShowStatusList, dropDownButtonTarget, setDropDownButtonTarget, classShow } = props;
 
   const statusContainerRef = useRef();
   const { formUpdate, setFormUpdate } = useContext(loginContext);
@@ -21,15 +21,25 @@ const LoginStatusList = (props) => {
     setFormUpdate({ ...formUpdate, status });
   };
 
-  const clickOutsideStatusHandler = e => {
+  const clickOutsideStatusHandler = useCallback(({ target }) => {
+    console.log("🚀 ~ file: LoginStatusList.jsx ~ line 26 ~ clickOutsideStatusHandler");
+
     const options = [
       statusContainerRef,
       setShowStatusList,
       dropDownButtonTarget,
-      e.target,
+      target,
     ];
     clickOutside(...options);
-  };
+
+    const isClickingOnStatus = statusContainerRef.current.contains(target);
+    const isClickingOnButton = dropDownButtonTarget.contains(target);
+
+    if (isClickingOnStatus === true || isClickingOnButton === false) {
+      setDropDownButtonTarget(null);
+      document.removeEventListener('click', clickOutsideStatusHandler);
+    }
+  }, [dropDownButtonTarget]);
 
   useEffect(() => {
     if (dropDownButtonTarget) {
@@ -38,7 +48,6 @@ const LoginStatusList = (props) => {
 
     return () => {
       document.removeEventListener('click', clickOutsideStatusHandler);
-
     };
   }, [dropDownButtonTarget]);
 

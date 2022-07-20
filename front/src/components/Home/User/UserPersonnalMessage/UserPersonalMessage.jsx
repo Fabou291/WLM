@@ -14,8 +14,10 @@ const UserPersonalMessage = () => {
   const [clickedTarget, setClickedTarget] = useState(null);
   const [clickedButtonTarget, setClickedButtonTarget] = useState(null);
   const handleListener = useCallback(({ target }) => {
+    console.log("🚀 ~ file: UserPersonalMessage.jsx ~ line 20 ~ handleListener");
     setClickedTarget(target);
-  }, []);
+  }, [clickedTarget]);
+
 
 
   const handlePersonalMessage = ({ key }) => {

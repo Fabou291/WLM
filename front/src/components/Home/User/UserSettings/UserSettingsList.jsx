@@ -1,5 +1,5 @@
 // HOOKS
-import { useRef, useEffect, useContext } from 'react';
+import { useRef, useEffect, useContext, useCallback } from 'react';
 // CONTEXT
 import globalContext from '../../../../contexts/GlobalContext';
 // HELPERS
@@ -17,8 +17,7 @@ import {
 
 const UserSettingsList = (props) => {
 
-
-  const { setShowSettings, dropDownButtonTarget, classShow } = props;
+  const { setShowSettings, dropDownButtonTarget, setDropDownButtonTarget, classShow } = props;
 
   const settingsContainerRef = useRef();
   const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
@@ -30,15 +29,25 @@ const UserSettingsList = (props) => {
     setUserDataFromDb({ ...userDataFromDb, status });
   };
 
-  const clickOutsideStatusHandler = e => {
+  const clickOutsideStatusHandler = useCallback(({ target }) => {
+    console.log("🚀 ~ file: UserSettingsList.jsx ~ line 34 ~ clickOutsideStatusHandler");
+
     const options = [
       settingsContainerRef,
       setShowSettings,
       dropDownButtonTarget,
-      e.target,
+      target,
     ];
     clickOutside(...options);
-  };
+
+    const isClickingOnSettings = settingsContainerRef.current.contains(target);
+    const isClickingOnButton = dropDownButtonTarget.contains(target);
+
+    if (isClickingOnSettings === true || isClickingOnButton === false) {
+      setDropDownButtonTarget(null);
+      document.removeEventListener('click', clickOutsideStatusHandler);
+    }
+  }, [dropDownButtonTarget]);
 
   useEffect(() => {
     if (dropDownButtonTarget) {
@@ -47,7 +56,6 @@ const UserSettingsList = (props) => {
 
     return () => {
       document.removeEventListener('click', clickOutsideStatusHandler);
-
     };
   }, [dropDownButtonTarget]);
 
