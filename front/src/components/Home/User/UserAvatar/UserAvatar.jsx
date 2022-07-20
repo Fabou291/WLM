@@ -8,7 +8,13 @@ const UserAvatar = () => {
   const { userDataFromDb } = useContext(globalContext);
 
   return (
-    <div>UserAvatar</div>
+    <div className="user-avatar__container">
+      <img
+        src={"http://localhost:3333/" + userDataFromDb.avatar}
+        alt="Avatar de l'utilisateur"
+        className="avatar"
+      />
+    </div>
   );
 };
 
