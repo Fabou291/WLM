@@ -1,14 +1,17 @@
-// HOOKS
-import { useContext } from 'react';
-// CONTEXT
-import globalContext from '../../../../contexts/GlobalContext';
+import React from 'react';
 
-const UserSettingsStatus = () => {
+const UserSettingsStatus = (props) => {
 
-  const { userDataFromDb, setUserDataFromDb } = useContext(globalContext);
+  const { status, handleModifyStatus } = props.data;
 
   return (
-    <div>UserSettingsStatus</div>
+    <li onClick={handleModifyStatus} data-status={status.key}>
+      <div className="status-img__container">
+        <img className="notHover" src={status.icon} alt="status icon" />
+        <img className="hover" src={status.inconHover} alt="status icon hovered" />
+      </div>
+      <span>{status.sentence}</span>
+    </li>
   );
 };
 
