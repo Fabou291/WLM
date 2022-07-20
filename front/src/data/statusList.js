@@ -37,7 +37,7 @@ const statusList = {
   },
   appearOffline: {
     sentence: 'Hors ligne',
-    key: 'offline',
+    key: 'appearOffline',
     icon: './assets/icons/statusIcons/offline.png',
     inconHover: './assets/icons/statusIcons/offline_hover.png',
   },
