@@ -28,7 +28,6 @@ const UserPersonalMessage = () => {
 
   const handleInputLength = () => {
     const textLength = hiddenTextRef.current.offsetWidth;
-    console.log(textLength);
     inputRef.current.style.width = 20 + textLength + "px";
   };
 
