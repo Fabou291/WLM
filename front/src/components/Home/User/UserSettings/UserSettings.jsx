@@ -26,7 +26,7 @@ const UserSettings = () => {
         type="button"
         className={`status-select${showSettings ? " border" : ""}`}
         onClick={handleUserSettings}>
-        <span><b>{userDataFromDb.email}</b></span>
+        <span className="user__pseudo"><b>{userDataFromDb.username}</b></span>
         <span className="button-sentence">({statusList[userDataFromDb.status].sentence})</span>
         <div className="user__container-dropdown" id="dropDownStatus">
           < ArrowIcon />
