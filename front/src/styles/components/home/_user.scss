@@ -45,18 +45,21 @@
     box-sizing: border-box;
     position: absolute;
     content: "";
-    inset: 0;
     border-style: solid;
     border-width: 1px;
     pointer-events: none;
   }
 
   &::before {
-    border-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%) 1;
+    border-image: linear-gradient(180deg, #428aa681 0%, rgba(255, 255, 255, 1) 100%) 1;
+    // border-image: linear-gradient(180deg, red 0%, blue 100%) 1;
     z-index: 1;
+    inset: 1px 1px 0 1px;
+    border-width: 2px;
   }
 
   &::after {
+    inset: 0;
     border-image: linear-gradient(
         90deg,
         rgba(126, 174, 195, 1) 0%,
@@ -70,7 +73,7 @@
 
   &-settings {
     padding-right: 20px;
-    z-index: 1;
+    z-index: 2;
   }
 
   .user-avatar__container {
@@ -98,17 +101,28 @@
 
   .user-personnal-message {
     grid-area: message;
-    padding: 2px;
     border: solid transparent 1px;
+    padding: 4px 3px;
+  }
+
+  form {
+    z-index: 1;
   }
 
   input {
     border: 1px solid $bg-login-input-border;
-    padding: 3px;
+    padding: 4px 3px;
 
     &:focus {
       outline: none;
     }
+  }
+
+  .hidden-text {
+    position: absolute;
+    visibility: hidden;
+    min-width: 20px;
+    padding: 3px;
   }
 
   span {
@@ -117,6 +131,7 @@
 
   .button-sentence {
     margin-left: 5px;
+    white-space: nowrap;
   }
 
   button {
@@ -124,8 +139,11 @@
     background-color: transparent;
     border: solid transparent 1px;
     padding: 2px;
-    max-width: 100%;
+    max-width: 460px;
+    // max-width: 100%;
     padding-right: 20px;
+    // overflow: hidden;
+    display: flex;
 
     &:hover,
     &:focus {
@@ -146,8 +164,15 @@
       }
     }
 
+    .user__pseudo {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
     b {
       font-weight: bold !important;
+      max-width: 50px;
     }
 
     .user__container-dropdown {
@@ -177,7 +202,7 @@
     grid-area: settings;
     @include flex($flow: column);
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     gap: 5px;
     background-color: $bg-login-email-drop;
     border: 1px solid $border-login-status-list;
