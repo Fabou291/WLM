@@ -1,0 +1,79 @@
+@use "../../../abstracts/index" as *;
+
+.user__container {
+  .user-settings {
+    grid-area: settings;
+    @include flex($flow: column);
+    position: absolute;
+    z-index: 2;
+    gap: 5px;
+    background-color: $bg-login-email-drop;
+    border: 1px solid $border-login-status-list;
+    width: 200px;
+    padding: 2px;
+    left: 0;
+    top: 21px;
+
+    li {
+      position: relative;
+      @include flex($align: center);
+      height: 20px;
+      line-height: 20px;
+
+      &:nth-child(8) {
+        height: auto;
+        margin-top: 5px;
+      }
+
+      &:nth-child(8)::before,
+      &:nth-child(8)::after {
+        position: absolute;
+        content: "";
+      }
+
+      &:nth-child(8)::before {
+        inset: -5px 5px 0 5px;
+        border-top: solid $border-login-status-list 1px;
+      }
+
+      &:nth-child(8)::after {
+        inset: -4px 5px 0 5px;
+        border-top: solid white 1px;
+      }
+
+      &:hover {
+        background-color: $bg-login-status-list-hover;
+        color: white;
+        cursor: default;
+      }
+
+      &:hover .notHover {
+        visibility: hidden;
+      }
+
+      &.list-settings {
+        padding-left: 23px;
+      }
+
+      .status-img__container {
+        position: relative;
+        height: 18px;
+        width: 17px;
+        img {
+          position: absolute;
+        }
+        .notHover {
+          z-index: 2;
+        }
+
+        .hover {
+          z-index: 1;
+        }
+      }
+
+      span {
+        margin-left: 5px;
+      }
+    }
+  }
+}

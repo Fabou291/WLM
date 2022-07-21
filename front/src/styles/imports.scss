@@ -28,8 +28,13 @@
 
 // HOME
 
+@use "./components/home/home";
 @use "./components/home/contacts";
-@use "./components/home/user";
+@use "./components/home/user/user";
+@use "./components/home/user/user_settings";
+@use "./components/home/user/user_avatar";
+@use "./components/home/user/user_personal_message";
+@use "./components/home/user/user_buttons";
 
 // REGISTER
 

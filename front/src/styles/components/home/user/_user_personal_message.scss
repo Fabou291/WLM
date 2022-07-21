@@ -1,0 +1,33 @@
+@use "../../../abstracts/index" as *;
+
+.user__container {
+  form {
+    z-index: 1;
+
+    .user-personnal-message {
+      grid-area: message;
+      border: solid transparent 1px;
+      padding: 4px 3px;
+    }
+
+    .hidden-text {
+      position: absolute;
+      visibility: hidden;
+      min-width: 20px;
+      padding: 3px;
+    }
+
+    input {
+      border: 1px solid $bg-login-input-border;
+      padding: 4px 3px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    span {
+      pointer-events: none;
+    }
+  }
+}

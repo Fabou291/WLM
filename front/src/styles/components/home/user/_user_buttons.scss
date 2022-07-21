@@ -1,0 +1,67 @@
+@use "../../../abstracts/index" as *;
+
+.user__container {
+  button {
+    position: relative;
+    background-color: transparent;
+    border: solid transparent 1px;
+    padding: 2px;
+    max-width: 460px;
+    // max-width: 100%;
+    padding-right: 20px;
+    // overflow: hidden;
+    display: flex;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #4890c8;
+
+      &::before {
+        position: absolute;
+        content: "";
+        inset: 0;
+        border: 1px solid white;
+        background: linear-gradient(
+          to bottom,
+          rgb(224, 240, 240) 0%,
+          rgb(192, 224, 232) 93%,
+          rgb(192, 224, 232) 100%
+        );
+        z-index: -1;
+      }
+    }
+
+    .user__pseudo {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    b {
+      font-weight: bold !important;
+      max-width: 50px;
+    }
+
+    .user__container-dropdown {
+      position: absolute;
+      top: 0;
+      right: -2px;
+      height: 100%;
+      width: 20px;
+      @include flex($align: center, $justify: center);
+      background-color: transparent;
+      border: none;
+
+      svg {
+        position: absolute;
+        inset: 0;
+        @include translate-center;
+        font-size: 1rem !important;
+      }
+    }
+
+    #dropDownStatus {
+      pointer-events: none;
+    }
+  }
+}
